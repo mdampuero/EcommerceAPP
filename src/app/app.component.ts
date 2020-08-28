@@ -1,69 +1,115 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Component, OnInit } from "@angular/core";
+import { FCM } from "@ionic-native/fcm/ngx";
+import { Platform, ModalController } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { CartPage } from "./modals/cart/cart.page";
+import { Router } from "@angular/router";
+import { LoginService } from "src/app/services/login/login.service";
+import { FirebaseService } from "src/app/services/firebase/firebase.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public token = "";
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: "Inicio",
+      url: "/home",
+      isModal: false,
+      isLogout: false,
+      icon: "home",
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: "Productos",
+      url: "/categories",
+      isModal: false,
+      isLogout: false,
+      icon: "hammer",
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: "Carrito de compras",
+      url: "/cart",
+      isModal: true,
+      icon: "cart",
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: "Favoritos",
+      url: "/favorites",
+      isModal: false,
+      isLogout: false,
+      icon: "heart",
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: "Pedidos",
+      url: "/orders",
+      isModal: false,
+      isLogout: false,
+      fa: "fa-clipboard-list",
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
-    }
+      title: "Mis datos",
+      url: "/settings",
+      isModal: false,
+      isLogout: false,
+      icon: "person",
+    },
+    {
+      title: "Salir",
+      url: "/logout",
+      isModal: false,
+      isLogout: true,
+      icon: "exit",
+    },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    private firebaseService: FirebaseService,
+    public loginService: LoginService,
+    public modalController: ModalController,
+    private fcm: FCM
   ) {
     this.initializeApp();
+    platform.ready().then(() => {
+      this.fcm.getToken().then((token) => {
+        this.firebaseService.save({
+          token: token,
+        });
+      }).catch((err) => {
+      });
+    });
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
   }
 
+  async goToModal() {
+    const modal = await this.modalController.create({
+      component: CartPage,
+    });
+    return await modal.present();
+  }
+  logout() {
+    this.loginService.logout();
+    this.router.navigateByUrl(`/login`);
+  }
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+    
+
+    // if (this.loginService.user.id == null) {
+    //   this.router.navigateByUrl(`/login`);
+    // }
   }
 }

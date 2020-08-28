@@ -1,0 +1,51 @@
+<ion-item *ngFor="let item of items">
+    <div class="item-product" [ngStyle]="{ 'height': btnAdd == true ? '140px' : '100px'}" style="background-color:#FFF;display: block; height: 140px; width: 100%; padding:10px; ">
+        <app-favorites *ngIf=btnFavorite [product]="item" [size]="'small'"></app-favorites>
+        <app-btn-rem-cart *ngIf=btnRemove [item]="item" [size]="'small'"></app-btn-rem-cart>
+        <div (click)="goToProduct(item)" style="width: 100px; height: 100%; float:left;margin-right: 10px; text-align:center;">
+            <img *ngIf="item['picture']" src="{{ environment.baseUrl }}uploads/sm/{{ item.picture }}" style="transform: translateY(-50%);
+            top: 50%;
+            position: relative;
+            max-height: 100%;
+            max-width: 100%;">
+            <img *ngIf="!item['picture']" src="../assets/img/no-photo.jpg" style="transform: translateY(-50%);
+            top: 50%;
+            position: relative;
+            max-height: 100%;
+            max-width: 100%;">
+        </div>
+        <div style="margin-left: 10px;">
+            <h4 (click)="goToProduct(item)" style="margin:0;padding:0;color:#333; margin-bottom: 5px; font-size:0.8em; font-weight: bold; height:30px; margin-right: 15px;">{{ item.name | titlecase}}</h4>
+            <ion-row>
+                <ion-col style="padding:0px;">
+                    <p (click)="goToProduct(item)" style="margin:0;padding:5px 0px; font-size:0.8em; font-weight: bold; color:#555;">{{ item.code }}</p>
+                </ion-col>
+                <ion-col style="padding:0px;" class="ion-text-right" *ngIf="item.vat">
+                    <ion-text style="font-size:0.7em; color:#555;">IVA: {{ (item.vat * 100) - 100 }}%</ion-text>
+                </ion-col>
+            </ion-row>
+            <ion-grid (click)="goToProduct(item)" *ngIf="!amounts">
+                <ion-row>
+                    <ion-col style="padding:0px;">
+                        <ion-text style="font-size: 13px; margin:0; color:#666">L:</ion-text>
+                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">${{ item.price | number : '1.2-2'}}</ion-text>
+                    </ion-col>
+                    <ion-col style="padding:0px;">
+                        <ion-text style="font-size: 13px; margin:0; color:#666">C:</ion-text>
+                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">${{ item.cost | number : '1.2-2' }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-row *ngIf=btnAdd>
+                <app-cart-buttons [item]="item"></app-cart-buttons>
+            </ion-row>
+            <ion-row (click)="goToProduct(item)" *ngIf="amounts">
+                <ion-col style="padding:0px;">
+                    <ion-text style="font-size: 13px; margin:0; padding:0; color:#666">Subtotal:</ion-text>
+                    <ion-text color="primary" style="font-size: 1em;font-weight: normal;"> $ {{ item.subtotal | number : '1.2-2' }}</ion-text>
+                </ion-col>
+            </ion-row>
+            <!-- <app-btn-add-cart *ngIf=btnAdd [item]="item" [icon]="btnAddIcon" [size]="'small'"></app-btn-add-cart> -->
+        </div>
+    </div>
+</ion-item>

@@ -1,0 +1,27 @@
+<ion-header translucent>
+    <ion-toolbar color="primary">
+        <ion-title>Carrito de compras</ion-title>
+        <ion-buttons slot="end">
+            <ion-icon (click)="dismiss()" name="close-outline" size="large">
+            </ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <app-empty *ngIf="cartService.list.length == 0" [text]="'El carrito de compras está vacío'"></app-empty>
+    <ion-list *ngIf="cartService.list.length > 0">
+        <app-product-item [items]="cartService.list" [btnRemove]="true" [amounts]="true" [btnFavorite]="false" [btnLink]="false" [btnAdd]="true" [btnAddIcon]="'create'"></app-product-item>
+    </ion-list>
+    <div class="ion-padding">
+        <p class="ion-text-right">
+            <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: $ {{ cartService.total | number : '1.2-2' }}</ion-text>
+        </p>
+        <p class="ion-text-right">
+            <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: $ {{ cartService.totalVat - cartService.total | number : '1.2-2' }}</ion-text>
+        </p>
+        <h2 class="ion-text-right">
+            <ion-text color="primary">Total: $ {{ cartService.totalVat | number : '1.2-2' }}</ion-text>
+        </h2>
+        <ion-button (click)="confirmSend()" expand="block" color="success">Enviar pedido</ion-button>
+    </div>
+</ion-content>

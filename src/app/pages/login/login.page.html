@@ -1,0 +1,46 @@
+<ion-content class="background">
+    <!-- <div style="background-color:rgb(26,39,53); height:100%" "> -->
+    <div class="ion-padding" style="
+      height: 100%;
+      background-image: url('assets/img/hunter-haley-s8OO2-t-HmQ-unsplash.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    " class="ion-text-center ion-padding-top">
+        <div style="position: absolute; top: 50%; transform: translateY(-60%); width: 100%;">
+            <div class="ion-padding-top">
+                <img src="assets/img/logo.png" />
+            </div>
+            <div class="ion-padding" style="max-width: 400px; margin: auto;">
+                <ion-card style="background: rgba(0, 0, 0, 0.4); color: #fff;">
+                    <ion-card-header style="border-bottom: solid 1px #666666;">
+                        <ion-card-title color="white">
+                            <ion-text style="color: #fff;">Bienvenido</ion-text>
+                        </ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <div class="ion-padding">
+                            <p>Ingrese sus datos personales para acceder y poder comprar.</p>
+                            <ion-list style="background: transparent;">
+                                <ion-item>
+                                    <ion-input type="email" placeholder="Email" [(ngModel)]="username"></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+                                </ion-item>
+                            </ion-list>
+                            <hr />
+                            <ion-button expand="block" color="danger" (click)="login()">Ingresar</ion-button>
+                            <ion-button expand="block" color="light" (click)="register()">Registrase</ion-button>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </div>
+        <div style="position: fixed; bottom: 15px; text-align: center; width: 100%;">
+            <a target="_blank" href="http://apachecms.com.ar" style="text-decoration: none; font-size: 11px; font-weight: bold;">
+                <ion-text color="light">Powered by: Apachecms</ion-text>
+            </a>
+        </div>
+    </div>
+</ion-content>

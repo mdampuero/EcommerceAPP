@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Pedido</ion-title>
+        <ion-buttons slot="end">
+            <app-icon-cart></app-icon-cart>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title *ngIf="order['customerName']">{{ order['customerName'] }} (Nº: {{ order.id }})</ion-card-title>
+            <ion-card-title *ngIf="!order['customerName']">Pedido Nº: {{ order.id }}</ion-card-title>
+            <ion-card-subtitle>Fecha: {{ order.createdAt | date : 'dd/MM/y HH:mm'}}</ion-card-subtitle>
+            <p>
+                <ion-badge color="{{ order['status']['color'] }}">{{ order["status"]["name"] }}</ion-badge>
+            </p>
+        </ion-card-header>
+        <ion-card-content>
+            <p *ngIf="order['customerName']">
+                Cliente: {{ order['customerName'] }}
+            </p>
+            <p *ngIf="order['transport']">
+                Transporte: {{ order['transport'] }}
+            </p>
+            <p>
+                Observaciones: {{ order.observations }}
+            </p>
+        </ion-card-content>
+    </ion-card>
+    <ion-list>
+        <app-product-item [items]="order.items" [btnRemove]="false" [amounts]="true" [btnFavorite]="false" [btnLink]="false" [btnAdd]="false" [btnAddIcon]="'create'"></app-product-item>
+    </ion-list>
+    <div class="ion-padding">
+        <p class="ion-text-right">
+            <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: $ {{ order.total | number : '2.2-2' }}</ion-text>
+        </p>
+        <p class="ion-text-right">
+            <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: $ {{ order["totalVat"] - order.total | number : '2.2-2' }}</ion-text>
+        </p>
+        <h2 class="ion-text-right">
+            <ion-text color="primary">Total: $ {{ order["totalVat"] | number : '2.2-2' }}</ion-text>
+        </h2>
+    </div>
+</ion-content>

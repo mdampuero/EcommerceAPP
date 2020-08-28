@@ -1,0 +1,21 @@
+<app-navbar [search]="false" [title]="'Pedidos'" [cart]="true"></app-navbar>
+<ion-content fullscreen>
+    <app-empty *ngIf="total == 0" [text]="'No se encontraron resultados'"></app-empty>
+    <ion-list *ngIf="total > 0">
+        <ion-item detail *ngFor="let item of results; index as i" (click)="goToOrder(i)">
+            <ion-label>
+                <h2 *ngIf="item.customerName">{{ item.customerName }} (Nº {{ item.id }})</h2>
+                <h2 *ngIf="!item.customerName">Pedido Nº {{ item.id }}</h2>
+                <h3>
+                    <ion-text color="medium"><b>{{ item.createdAt | date : 'dd/MM/y HH:mm'}}</b></ion-text>
+                </h3>
+                <p><b>$ {{ item.totalVat | number : '1.2-2' }}</b></p>
+            </ion-label>
+            <ion-badge *ngIf="item.status" color="{{ item.status.color }}" slot="end">{{ item.status.name }}</ion-badge>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="150px" (ionInfinite)="continue($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

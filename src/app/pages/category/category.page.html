@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Categoría</ion-title>
+        <ion-buttons slot="end">
+            <app-icon-cart></app-icon-cart>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <app-empty *ngIf="total == 0" [text]="'No se encontraron resultados'"></app-empty>
+    <ion-list *ngIf="total > 0">
+        <div class="ion-padding-start ion-padding-end">
+            <ion-row style="font-size:14px;">
+                <ion-col size="8">
+                    {{ category.text }}
+                </ion-col>
+                <ion-col class="ion-text-end" size="4">
+                    <app-alert-order [page]="'category'"></app-alert-order>
+                </ion-col>
+            </ion-row>
+        </div>
+        <app-product-item [items]="results"></app-product-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="150px" (ionInfinite)="continue($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

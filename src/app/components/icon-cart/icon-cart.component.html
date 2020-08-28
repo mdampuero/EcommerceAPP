@@ -1,0 +1,8 @@
+<div (click)="presentModal()">
+    <ion-icon name="cart" size="large">
+    </ion-icon>
+
+    <div class="badge-cart" *ngIf="amount>0">
+        <ion-text>{{ amount }}</ion-text>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "665242428385",
+    "firebase_url": "https://nortcuyonotificaciones.firebaseio.com",
+    "project_id": "nortcuyonotificaciones",
+    "storage_bucket": "nortcuyonotificaciones.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665242428385:android:05ef50e8e7ad3ac23228a0",
+        "android_client_info": {
+          "package_name": "com.nortcuyo.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665242428385-gmn66vo9658vrkhumlpgtatkiurona80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEIEBQSvHg4-p0du0OtRgb5XtGpPtYsiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665242428385-gmn66vo9658vrkhumlpgtatkiurona80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

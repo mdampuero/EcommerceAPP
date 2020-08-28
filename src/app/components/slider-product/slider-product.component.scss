@@ -1,0 +1,14 @@
+ion-card img {
+    padding: 5%;
+}
+
+ion-card ion-card-header {
+    padding-top: 8px;
+    background-color: var(--ion-color-light-tint);
+    padding-bottom: 8px;
+    text-align: left;
+}
+
+ion-card ion-card-content {
+    background-color: var(--ion-color-light-tint);
+}

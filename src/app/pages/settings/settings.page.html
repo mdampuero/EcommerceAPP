@@ -1,0 +1,38 @@
+<app-navbar [search]="false" [title]="'Mis datos'" [cart]="true"></app-navbar>
+<ion-content fullscreen>
+    <div>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input [(ngModel)]="user.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input [(ngModel)]="user.email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">CUIT/CUIL</ion-label>
+                <ion-input [(ngModel)]="user.document"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Teléfono</ion-label>
+                <ion-input [(ngModel)]="user.phone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Dirección</ion-label>
+                <ion-input [(ngModel)]="user.address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Ciudad</ion-label>
+                <ion-input [(ngModel)]="user.city"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Provincia</ion-label>
+                <ion-input [(ngModel)]="user.provence"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div class="ion-padding-horizontal ion-padding-vertical">
+        <ion-button expand="block" (click)="onClick()" type="button" class="ion-no-margin">Actualizar datos</ion-button>
+    </div>
+</ion-content>

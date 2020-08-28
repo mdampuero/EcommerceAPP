@@ -1,5 +1,7 @@
 {
   "name": "nortcuyoapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

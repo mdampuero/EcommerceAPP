@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Producto</ion-title>
+        <ion-buttons slot="end">
+            <app-icon-cart></app-icon-cart>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-product-card [items]="[item]" [isFull]="true"></app-product-card>
+    <h1>
+        <ion-title>Productos relacionados</ion-title>
+    </h1>
+    <div class="ion-padding-start">
+        <div class="ion-text-center" *ngIf="loadingRelated">
+            <ion-spinner name="lines"></ion-spinner>
+        </div>
+        <ion-slides [options]="slideOptsRelated" *ngIf="!loadingRelated">
+            <ion-slide *ngFor="let item of relateds; index as i">
+                <app-slider-product style="width:100%;" [product]="item"></app-slider-product>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>

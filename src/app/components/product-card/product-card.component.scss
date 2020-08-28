@@ -1,0 +1,15 @@
+ion-card ion-card-header {
+    background-color: var(--ion-color-light-tint);
+}
+
+ion-card ion-card-content {
+    background-color: var(--ion-color-light-tint);
+}
+
+.price {
+    font-size: 2em;
+}
+
+.price.small {
+    font-size: 1.5em;
+}

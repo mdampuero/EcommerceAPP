@@ -1,0 +1,12 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button *ngIf="menu"></ion-menu-button>
+            <ion-back-button *ngIf="!menu"></ion-back-button>
+        </ion-buttons>
+        <ion-title *ngIf="title.length>0">{{ title }}</ion-title>
+        <ion-buttons slot="end" *ngIf="cart">
+            <app-icon-cart></app-icon-cart>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>

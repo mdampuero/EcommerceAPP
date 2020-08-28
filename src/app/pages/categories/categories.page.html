@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-searchbar class="ion-padding-end" [(ngModel)]="query" #q showCancelButton="focus" (keyup.enter)="search(q.value)" autocorrect="off" placeholder="Buscar producto..." showCancelButton="focus" cancelButtonText="Cancelar"></ion-searchbar>
+        <ion-buttons slot="end">
+            <app-icon-cart></app-icon-cart>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <!-- <ion-item *ngFor="let item of results" detail (click)="goToCategory(item)">
+            <ion-icon name="checkmark-circle" color="primary" slot="start"></ion-icon>
+            <h5 style="font-weight: normal;">{{ item.name | titlecase }}</h5>
+        </ion-item> -->
+
+    <div *ngFor="let item of items">
+        <app-tree-item *ngIf="item.children.length > 0" [items]="item.children"></app-tree-item>
+    </div>
+
+</ion-content>

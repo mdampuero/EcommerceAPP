@@ -1,0 +1,15 @@
+<div class="ion-text-center" *ngIf="loadingSalients">
+    <ion-spinner name="lines"></ion-spinner>
+</div>
+<div *ngFor="let salient of data;">
+    <h1>
+        <ion-title>{{ salient.title }}</ion-title>
+    </h1>
+    <div class="ion-padding-start ion-padding-end">
+        <ion-slides [options]="slideOpts">
+            <ion-slide *ngFor="let item of salient.products; index as i">
+                <app-slider-product style="width:100%;" [product]="item['product']"></app-slider-product>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</div>

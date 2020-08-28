@@ -1,0 +1,6 @@
+<div class="favorite {{ size }}">
+    <ion-text color="danger">
+        <ion-icon (click)="isFavorite(product)" name="heart-outline" *ngIf="!product['isFavorite']"></ion-icon>
+        <ion-icon (click)="isFavorite(product)" name="heart" *ngIf="product['isFavorite']"></ion-icon>
+    </ion-text>
+</div>

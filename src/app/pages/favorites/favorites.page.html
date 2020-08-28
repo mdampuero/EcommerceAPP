@@ -1,0 +1,7 @@
+<app-navbar [search]="false" [title]="'Favoritos'" [cart]="true"></app-navbar>
+<ion-content fullscreen>
+    <app-empty *ngIf="favoriteService.list.length == 0" [text]="'No tienes productos favoritos'"></app-empty>
+    <ion-list *ngIf="favoriteService.list.length > 0">
+        <app-product-item [items]="favoriteService.list" [btnRemove]="false" [btnFavorite]="true" [btnAdd]="true" [btnLink]="true"></app-product-item>
+    </ion-list>
+</ion-content>

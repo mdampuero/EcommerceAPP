@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  // production: false,
+  // baseUrl: 'http://192.168.1.217/nortcuyo/web/',
+  // apiUrl: 'app_dev.php/api/',
+  production: true,
+  baseUrl: 'http://nortcuyo.apachecms.com.ar/',
+  apiUrl: 'api/',
 };
 
 /*

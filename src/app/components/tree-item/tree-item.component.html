@@ -1,0 +1,7 @@
+<div *ngFor="let item of items" style="margin-left: 12px;">
+    <ion-item detail (click)="goToCategory(item)">
+        <ion-label>{{ item.text }}</ion-label>
+        <ion-badge color="success" slot="end" *ngIf="item.items > 0">{{ item.items }}</ion-badge>
+    </ion-item>
+    <app-tree-item *ngIf="item.children.length > 0" [items]="item.children"></app-tree-item>
+</div>

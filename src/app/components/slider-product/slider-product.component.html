@@ -1,0 +1,33 @@
+<ion-card (click)="goToProduct(product)">
+    <div style="padding:5px; height: 150px; vertical-align: middle;">
+        <img *ngIf="!product['picture']" src="../assets/img/no-photo.jpg" style="
+          top: 50%;
+          transform: translateY(-50%);
+          position: relative;
+          max-height: 100%;
+          max-width: 100%;" />
+        <img *ngIf="product['picture']" src="{{ environment.baseUrl }}uploads/sm/{{ product.picture }}" style="
+          top: 50%;
+          transform: translateY(-50%);
+          position: relative;
+          max-height: 100%;
+          max-width: 100%;" />
+    </div>
+    <ion-card-header>
+        <ion-card-subtitle style="height: 50px;">{{ product.name | titlecase}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="ion-text-start">
+        <div>
+            <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">L:</ion-text>
+            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> $ {{ product.price | number : '1.2-2'}}</ion-text>
+        </div>
+        <div>
+            <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">C:</ion-text>
+            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> $ {{ product.cost| number : '1.2-2' }}</ion-text>
+        </div>
+        <div>
+            <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">IVA:</ion-text>
+            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> {{ (product.vat * 100) - 100 }}%</ion-text>
+        </div>
+    </ion-card-content>
+</ion-card>

@@ -1,0 +1,16 @@
+<div style="width: 100%;">
+    <ion-button color="light" size="small" class="custom" (click)="remove()" style="width: 30%;margin-top:-5px;">
+        <ion-icon color="danger" name="remove-outline"></ion-icon>
+    </ion-button>
+    <input type="number" [(ngModel)]="item.amount" (blur)="onBlurMethod()" (blur)="onFocusMethod()" style="
+width: 30%;
+text-align: center;
+font-size: 15px;
+color: #666;
+line-height: 26px;
+border: none;
+margin-top: 4px;">
+    <ion-button color="light" size="small" class="custom" (click)="add()" style="width: 30%;margin-top:-5px;">
+        <ion-icon color="success" name="add-outline"></ion-icon>
+    </ion-button>
+</div>
