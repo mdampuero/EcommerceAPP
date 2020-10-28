@@ -160,6 +160,19 @@ export class ApiService {
       items: cartService.list,
     });
   }
+  
+  shareOrder(cartService) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}budgets`, {
+      observations: '',
+      customerName: '',
+      transport: '',
+      channel: "APP",
+      total: cartService.total,
+      totalVat: cartService.totalVat,
+      customerId: this.loginService.user.id,
+      items: cartService.list,
+    });
+  }
 
   login(username: string, password: string) {
     return this.http.post(`${environment.baseUrl}${environment.apiUrl}login`, {

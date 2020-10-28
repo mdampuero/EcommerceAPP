@@ -37,13 +37,13 @@
     <div class="ion-padding">
         <div *ngFor="let total of order['totals']">
             <p class="ion-text-right">
-                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total['currency'].symbol }} {{ total.gross | number : '2.2-2' }}</ion-text>
+                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total['currency']["symbol"] }} {{ total.gross | number : '2.2-2' }}</ion-text>
             </p>
             <p class="ion-text-right">
-                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total['currency'].symbol }} {{ total.vat | number : '2.2-2' }}</ion-text>
+                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total['currency']["symbol"] }} {{ total.vat | number : '2.2-2' }}</ion-text>
             </p>
             <h2 class="ion-text-right">
-                <ion-text color="primary">Total: {{ total['currency'].symbol }} {{ total.total | number : '2.2-2' }}</ion-text>
+                <ion-text color="primary">Total: {{ total['currency']["symbol"] }} {{ total.total | number : '2.2-2' }}</ion-text>
             </h2>
         </div>
     </div>

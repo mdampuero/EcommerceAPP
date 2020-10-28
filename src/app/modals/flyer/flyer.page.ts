@@ -17,7 +17,7 @@ import { LoginService } from "../../services/login/login.service";
 })
 export class FlyerPage implements OnInit {
   @Input() picture: string;
-  slideOpts = {
+  sliderOpt = {
     initialSlide: 0,
     speed: 400,
   };

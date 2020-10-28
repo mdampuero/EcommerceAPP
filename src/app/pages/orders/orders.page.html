@@ -10,7 +10,7 @@
                     <ion-text color="medium"><b>{{ item.createdAt | date : 'dd/MM/y HH:mm'}}</b></ion-text>
                 </h3>
                 <p *ngFor="let total of item.totals">
-                    <b>Total: {{ total.currency.symbol }} {{ total.total | number : '1.2-2' }} </b>
+                    <b>Total: {{ total.currency["symbol"] }} {{ total.total | number : '1.2-2' }} </b>
                 </p>
             </ion-label>
             <ion-badge *ngIf="item.status" color="{{ item.status.color }}" slot="end">{{ item.status.name }}</ion-badge>

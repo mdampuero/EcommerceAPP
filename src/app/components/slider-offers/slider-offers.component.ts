@@ -52,8 +52,11 @@ export class SliderOffersComponent implements OnInit {
       queryParams: item,
     });
   }
-  async goToFlyer(picture) {
-    this.router.navigateByUrl(`/home/flyer`);
+  async goToFlyer(title, picture) {
+    this.router.navigate([`/home/flyer/`], {
+      queryParams: { title : title, picture: picture },
+    });
+    //this.router.navigateByUrl(`/home/flyer/${title}/${picture}`);
     // const modal = await this.modalController.create({
     //   component: FlyerPage,
     //   componentProps: {

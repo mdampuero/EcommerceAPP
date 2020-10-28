@@ -19,11 +19,11 @@
     <ion-card-content class="ion-text-start">
         <div>
             <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">L:</ion-text>
-            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> {{ product["currency"].symbol }} {{ product.price | number : '1.2-2'}}</ion-text>
+            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> {{ product["currency"]["symbol"] }} {{ product.price | number : '1.2-2'}}</ion-text>
         </div>
         <div>
             <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">C:</ion-text>
-            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> {{ product["currency"].symbol }} {{ product.cost| number : '1.2-2' }}</ion-text>
+            <ion-text color="primary" style="font-size: 1.2em;font-weight: normal;"> {{ product["currency"]["symbol"] }} {{ product.cost| number : '1.2-2' }}</ion-text>
         </div>
         <div>
             <ion-text style="font-size: 1.2em; margin:0; padding:0; color:#666">IVA:</ion-text>

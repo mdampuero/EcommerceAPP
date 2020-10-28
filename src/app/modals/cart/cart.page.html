@@ -15,15 +15,26 @@
     <div class="ion-padding">
         <div *ngFor="let total of cartService.totals">
             <p class="ion-text-right">
-                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total.symbol }} {{ total.total | number : '1.2-2' }}</ion-text>
+                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total["symbol"] }} {{ total.total | number : '1.2-2' }}</ion-text>
             </p>
             <p class="ion-text-right">
-                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total.symbol }} {{ total.totalVat - total.total | number : '1.2-2' }}</ion-text>
+                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total["symbol"] }} {{ total.totalVat - total.total | number : '1.2-2' }}</ion-text>
             </p>
             <h2 class="ion-text-right">
-                <ion-text color="primary">Total: {{ total.symbol }} {{ total.totalVat | number : '1.2-2' }}</ion-text>
+                <ion-text color="primary">Total: {{ total["symbol"] }} {{ total.totalVat | number : '1.2-2' }}</ion-text>
             </h2>
         </div>
-        <ion-button (click)="confirmSend()" expand="block" color="success">Enviar pedido</ion-button>
     </div>
+    <ion-grid>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-xs="6">
+                <ion-button *ngIf="loginService.user['isSeller']" (click)="share()" expand="block" color="primary">
+                    <ion-icon name="share-social-outline"></ion-icon> Compartir</ion-button>
+            </ion-col>
+            <ion-col size-xs="6">
+                <ion-button (click)="confirmSend()" expand="block" color="success">
+                    <ion-icon name="send-outline"></ion-icon> Enviar pedido</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

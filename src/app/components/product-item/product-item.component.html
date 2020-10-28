@@ -28,11 +28,11 @@
                 <ion-row>
                     <ion-col style="padding:0px;">
                         <ion-text style="font-size: 13px; margin:0; color:#666">L:</ion-text>
-                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">{{ item["currency"].symbol }} {{ item.price | number : '1.2-2'}}</ion-text>
+                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">{{ item["currency"]["symbol"] }} {{ item.price | number : '1.2-2'}}</ion-text>
                     </ion-col>
                     <ion-col style="padding:0px;">
                         <ion-text style="font-size: 13px; margin:0; color:#666">C:</ion-text>
-                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">{{ item["currency"].symbol }} {{ item.cost | number : '1.2-2' }}</ion-text>
+                        <ion-text color="primary" style="font-size: 1em;font-weight: normal;">{{ item["currency"]["symbol"] }} {{ item.cost | number : '1.2-2' }}</ion-text>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -42,7 +42,7 @@
             <ion-row (click)="goToProduct(item)" *ngIf="amounts">
                 <ion-col style="padding:0px;">
                     <ion-text style="font-size: 13px; margin:0; padding:0; color:#666">Subtotal:</ion-text>
-                    <ion-text color="primary" style="font-size: 1em;font-weight: normal;"> {{ item["currency"].symbol }} {{ item.subtotal | number : '1.2-2' }}</ion-text>
+                    <ion-text color="primary" style="font-size: 1em;font-weight: normal;"> {{ item["currency"]["symbol"] }} {{ item.subtotal | number : '1.2-2' }}</ion-text>
                 </ion-col>
             </ion-row>
             <!-- <app-btn-add-cart *ngIf=btnAdd [item]="item" [icon]="btnAddIcon" [size]="'small'"></app-btn-add-cart> -->

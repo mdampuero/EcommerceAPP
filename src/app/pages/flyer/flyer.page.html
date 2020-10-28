@@ -1,13 +1,19 @@
 <ion-header class="ion-no-border">
-    <ion-toolbar color="primary">
+    <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>Pedido</ion-title>
+        <ion-title>{{ data.title }}</ion-title>
         <ion-buttons slot="end">
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-
+    <div class="flex-content">
+        <ion-slides style="width:100%;" [options]="slideOpts">
+            <ion-slide>
+                <img src="{{ environment.baseUrl }}uploads/lg/{{ data.picture }}" style="max-width: 100%; width:100%;max-height: 100%;display: block;margin: 0 auto;" />
+            </ion-slide>
+        </ion-slides>
+    </div>
 </ion-content>

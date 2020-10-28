@@ -10,6 +10,8 @@ import { LoadingService } from "../../services/loading/loading.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { LoginService } from "../../services/login/login.service";
 
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.page.html",
@@ -19,6 +21,7 @@ export class CartPage implements OnInit {
   private total = 0;
   private inputs;
   constructor(
+    private socialSharing: SocialSharing,
     private router: Router,
     public loginService: LoginService,
     private activatedRoute: ActivatedRoute,
@@ -99,7 +102,7 @@ export class CartPage implements OnInit {
       (data) => {
         this.apiService.sendEmail(data["id"]);
         this.cartService.clear();
-        this.success();
+        this.success("Su pedido fue enviado correctamente");
       },
       (error) => {
         this.loadingService.loadingDismiss();
@@ -113,14 +116,35 @@ export class CartPage implements OnInit {
       }
     );
   }
+  share() {
+    this.loadingService.loadingPresent();
+    this.apiService.shareOrder(this.cartService).subscribe(
+      (data) => {
+        this.socialSharing.share(`Siga el siguiente enlace para descargar el archivo`, 'Nortcuyo - proforma', '',data['budget']['path']).then(() => {
+          this.success("El carrito de compras se compartió correctamente");
+        }).catch(() => {
+          // Error!
+        });
+        this.loadingService.loadingDismiss();
+      },
+      (error) => {
+        this.loadingService.loadingDismiss();
+        this.error();
+        console.error(error);
+      },
+      () => {
+        
+      }
+    );
+  }
   dismiss() {
     this.modalController.dismiss({
       dismissed: true,
     });
   }
-  async success() {
+  async success(message) {
     const toast = await this.toastCtrl.create({
-      message: "Su pedido fue enviado correctamente",
+      message: message,
       duration: 4000,
       animated: true,
       color: "success",

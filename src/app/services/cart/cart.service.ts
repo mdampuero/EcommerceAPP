@@ -48,7 +48,7 @@ export class CartService {
       this.total += myObject.subtotal;
       this.totalVat += myObject.subtotalVat;
 
-      let total=this.totals.find((total) => total.symbol === myObject["currency"].symbol);
+      let total=this.totals.find((total) => total["symbol"] === myObject["currency"]["symbol"]);
       total["total"]+=myObject.subtotal;
       total["totalVat"]+=myObject.subtotalVat;
     });
