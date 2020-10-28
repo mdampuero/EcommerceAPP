@@ -13,15 +13,17 @@
         <app-product-item [items]="cartService.list" [btnRemove]="true" [amounts]="true" [btnFavorite]="false" [btnLink]="false" [btnAdd]="true" [btnAddIcon]="'create'"></app-product-item>
     </ion-list>
     <div class="ion-padding">
-        <p class="ion-text-right">
-            <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: $ {{ cartService.total | number : '1.2-2' }}</ion-text>
-        </p>
-        <p class="ion-text-right">
-            <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: $ {{ cartService.totalVat - cartService.total | number : '1.2-2' }}</ion-text>
-        </p>
-        <h2 class="ion-text-right">
-            <ion-text color="primary">Total: $ {{ cartService.totalVat | number : '1.2-2' }}</ion-text>
-        </h2>
+        <div *ngFor="let total of cartService.totals">
+            <p class="ion-text-right">
+                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total.symbol }} {{ total.total | number : '1.2-2' }}</ion-text>
+            </p>
+            <p class="ion-text-right">
+                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total.symbol }} {{ total.totalVat - total.total | number : '1.2-2' }}</ion-text>
+            </p>
+            <h2 class="ion-text-right">
+                <ion-text color="primary">Total: {{ total.symbol }} {{ total.totalVat | number : '1.2-2' }}</ion-text>
+            </h2>
+        </div>
         <ion-button (click)="confirmSend()" expand="block" color="success">Enviar pedido</ion-button>
     </div>
 </ion-content>

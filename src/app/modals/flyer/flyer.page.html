@@ -1,0 +1,12 @@
+<ion-content fullscreen>
+    <ion-icon (click)="dismiss()" style="position: absolute;" name="close-outline" size="large"></ion-icon>
+    <div class="flex-content">
+        <ion-slides [options]="sliderOpt" zoom>
+            <ion-slide>
+                <div >
+                    <img id="photo-fullscreen" src="{{ environment.baseUrl }}uploads/lg/{{ picture }}" />
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>

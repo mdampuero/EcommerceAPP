@@ -42,6 +42,10 @@ const routes: Routes = [
           ),
       },
       {
+        path: "flyer",
+        loadChildren: () => import('./pages/flyer/flyer.module').then( m => m.FlyerPageModule)
+      },
+      {
         path: 'category',
         children: [
           {
@@ -104,6 +108,11 @@ const routes: Routes = [
       import("./modals/cart/cart.module").then((m) => m.CartPageModule),
   },
   {
+    path: "flyer",
+    loadChildren: () =>
+      import("./modals/flyer/flyer.module").then((m) => m.FlyerPageModule),
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -145,14 +154,6 @@ const routes: Routes = [
         ],
       },
     ],
-  },
-  {
-    path: 'page1',
-    loadChildren: () => import('./pagesTest/page1/page1.module').then( m => m.Page1PageModule)
-  },
-  {
-    path: 'page2',
-    loadChildren: () => import('./pagesTest/page2/page2.module').then( m => m.Page2PageModule)
   }
 ];
 

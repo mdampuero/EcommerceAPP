@@ -6,6 +6,8 @@ import { ProductService } from "src/app/services/product/product.service";
 import { environment } from "src/environments/environment";
 import { Product } from "../../models/product";
 import { CartService } from "src/app/services/cart/cart.service";
+import { ModalController } from "@ionic/angular";
+import { FlyerPage } from "../../modals/flyer/flyer.page";
 
 @Component({
   selector: "app-slider-offers",
@@ -33,6 +35,7 @@ export class SliderOffersComponent implements OnInit {
     private apiService: ApiService,
     private loadingService: LoadingService,
     private router: Router,
+    public modalController: ModalController,
     public cartService: CartService,
     public productService: ProductService
   ) {
@@ -49,6 +52,17 @@ export class SliderOffersComponent implements OnInit {
       queryParams: item,
     });
   }
+  async goToFlyer(picture) {
+    this.router.navigateByUrl(`/home/flyer`);
+    // const modal = await this.modalController.create({
+    //   component: FlyerPage,
+    //   componentProps: {
+    //   'picture': picture
+    // }
+    // });
+    // return await modal.present();
+  }
+
   ngOnInit() {
     //this.loadingService.loadingPresent();
     this.apiService.getOffers().subscribe(

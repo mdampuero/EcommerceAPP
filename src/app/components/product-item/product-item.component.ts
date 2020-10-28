@@ -22,15 +22,23 @@ export class ProductItemComponent implements OnInit {
   constructor(
     private router: Router,
     public loginService: LoginService,
-    public productService: ProductService,
+    public productService: ProductService
   ) {
     this.environment = environment;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.items.forEach((myObject, index) => {
+      if (typeof myObject["currency"] == "undefined") {
+        myObject["currency"] = myObject["productId"].currency;
+      }
+    });
+  }
   goToProduct(item: Product) {
     const urlTree = this.router.parseUrl(this.router.url);
-    const urlWithoutParams = urlTree.root.children['primary'].segments.map(it => it.path).join('/');
+    const urlWithoutParams = urlTree.root.children["primary"].segments
+      .map((it) => it.path)
+      .join("/");
     this.productService.save(item);
     if (this.btnLink) {
       this.router.navigate([`${urlWithoutParams}/product`], {

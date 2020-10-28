@@ -35,14 +35,16 @@
         <app-product-item [items]="order.items" [btnRemove]="false" [amounts]="true" [btnFavorite]="false" [btnLink]="false" [btnAdd]="false" [btnAddIcon]="'create'"></app-product-item>
     </ion-list>
     <div class="ion-padding">
-        <p class="ion-text-right">
-            <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: $ {{ order.total | number : '2.2-2' }}</ion-text>
-        </p>
-        <p class="ion-text-right">
-            <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: $ {{ order["totalVat"] - order.total | number : '2.2-2' }}</ion-text>
-        </p>
-        <h2 class="ion-text-right">
-            <ion-text color="primary">Total: $ {{ order["totalVat"] | number : '2.2-2' }}</ion-text>
-        </h2>
+        <div *ngFor="let total of order['totals']">
+            <p class="ion-text-right">
+                <ion-text color="primary" style="font-weight: bold; color:#555;">Total sin IVA: {{ total['currency'].symbol }} {{ total.gross | number : '2.2-2' }}</ion-text>
+            </p>
+            <p class="ion-text-right">
+                <ion-text color="primary" style="font-weight: bold; color:#555;">IVA: {{ total['currency'].symbol }} {{ total.vat | number : '2.2-2' }}</ion-text>
+            </p>
+            <h2 class="ion-text-right">
+                <ion-text color="primary">Total: {{ total['currency'].symbol }} {{ total.total | number : '2.2-2' }}</ion-text>
+            </h2>
+        </div>
     </div>
 </ion-content>

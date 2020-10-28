@@ -30,7 +30,9 @@ export class CartPage implements OnInit {
     public alertController: AlertController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
   async confirmSend() {
     this.inputs = [
       {

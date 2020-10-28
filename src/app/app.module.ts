@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CartPageModule } from './modals/cart/cart.module';
+import { FlyerPageModule } from './modals/flyer/flyer.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { CartPageModule } from './modals/cart/cart.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    CartPageModule
+    FlyerPageModule,
+    CartPageModule,
   ],
   providers: [
     FCM,
