@@ -8,6 +8,23 @@ const routes: Routes = [
     pathMatch: "full",
   },
   {
+    path: "preformatted",
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import('./pages/preformatted/preformatted.module').then( m => m.PreformattedPageModule)
+      },
+      {
+        path: "product",
+        loadChildren: () =>
+          import("./pages/product/product.module").then(
+            (m) => m.ProductPageModule
+          ),
+      },
+    ],
+  },
+  {
     path: "products",
     children: [
       {
@@ -155,6 +172,7 @@ const routes: Routes = [
       },
     ],
   }
+  
 ];
 
 @NgModule({

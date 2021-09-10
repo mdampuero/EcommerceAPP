@@ -131,6 +131,56 @@ export class ApiService {
       })
     );
   }
+
+  getPreformatteds() {
+    return this.http.get(`${environment.baseUrl}${environment.apiUrl}preformatteds?search%5Bvalue%5D=&start=0`);
+  }
+  
+  getPreformattedsItems(id:string) {
+    return this.http.get(`${environment.baseUrl}${environment.apiUrl}preformattedsItemsByPreformatted/${id}?length=-1&search[value]=`)
+    .pipe(
+      map((data) => {
+        console.log(data["data"]);   
+        const results: Product[] = [];
+        data["data"].forEach((myObject: { product: any;title:string }, index: any) => {
+          let product=myObject.product;
+          if(product){
+            product.cost = product.price * this.loginService.user["customerCategory"].discount;
+            results.push(new Product(product));
+          }else{
+            let producto={
+              barcode: null,
+              brand: null,
+              category: null,
+              code: null,
+              cost: 0,
+              currency: null,
+              description: null,
+              id: null,
+              isFavorite: false,
+              isUpdate: false,
+              name: myObject.title,
+              picture: null,
+              pictures: [],
+              price:0,
+              tags: null,
+              unit: 0,
+              vat:0
+            };    
+            results.push(new Product(producto));
+          }      
+        });
+        let response = {
+          results: results,
+          recordsFiltered: data["recordsFiltered"],
+          recordsTotal: data["recordsTotal"],
+          offset: data["offset"],
+          limit: data["limit"],
+        };        
+        return response;
+      })
+    );
+  }
   
   getRelated(code) {
     return this.http.get(`${environment.baseUrl}${environment.apiUrl}products/${code}/related`).pipe(

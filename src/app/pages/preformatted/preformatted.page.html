@@ -1,0 +1,16 @@
+<app-navbar [search]="false" [title]="'Listas preformateadas'" [cart]="true"></app-navbar>
+
+<ion-content>
+  <ion-list  slot="fixed" style="width: 100%;">
+    <ion-item>
+      <ion-label>Lista</ion-label>
+      <ion-select value="brown" interface="popover" [(ngModel)]="selectPreformatted" (ionChange)="onChange($event)">
+        <ion-select-option *ngFor="let item of preformatteds; index as i" value="{{ item.id }}">{{ item.title }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <br/>
+  <br/>
+  <br/>
+  <app-product-item [items]="data"></app-product-item>
+</ion-content>

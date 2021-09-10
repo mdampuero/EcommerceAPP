@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://192.168.1.136/nortcuyo/web/',
+  baseUrl: 'http://dev.nortcuyo.com/',
   apiUrl: 'app_dev.php/api/'
+  // baseUrl: 'http://www.nortcuyo.com/',
+  // apiUrl: 'api/',
 };
 
 /*

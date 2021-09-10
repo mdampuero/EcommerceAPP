@@ -32,6 +32,14 @@ export class AppComponent implements OnInit {
       icon: "hammer",
     },
     {
+      title: "Preformateadas",
+      url: "/preformatted",
+      isModal: false,
+      isLogout: false,
+      badge:'new',
+      icon: "shield-checkmark",
+    },
+    {
       title: "Carrito de compras",
       url: "/cart",
       isModal: true,
