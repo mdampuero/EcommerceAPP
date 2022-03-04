@@ -28,6 +28,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.items);
     this.items.forEach((myObject, index) => {
       if (typeof myObject["currency"] == "undefined") {
         myObject["currency"] = myObject["productId"].currency;
